@@ -33,8 +33,8 @@ except ImportError:
 else:
     import setuptools.command.build_py
 
-if sys.version_info < (3, 9, 0):
-    print("Autokey requires Python 3.9 or later. You are using " + ".".join(map(str, sys.version_info[:3])))
+if sys.version_info < (3, 8, 18):
+    print("Autokey requires Python 3.8 or later. You are using " + ".".join(map(str, sys.version_info[:3])))
     sys.exit(1)
 
 
@@ -210,7 +210,7 @@ setup(
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
         'Operating System :: POSIX :: Linux',
-        'Programming Language :: Python :: 3.9',
+        'Programming Language :: Python :: 3.8',
     ],
     keywords='automation hotkey expansion expander phrase macros keyboard auto key autokey ak shortcuts bind autohotkey mouse customization',
 )
