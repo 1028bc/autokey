@@ -7,6 +7,9 @@ from autokey import common
 
 import autokey.scripting
 
+import gettext
+# Defines "_" function for localisation
+gettext.install("autokey")
 
 if common.USED_UI_TYPE == "QT":
     from PyQt5.QtWidgets import QAction

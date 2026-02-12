@@ -19,7 +19,7 @@ class QtClipboard(AbstractClipboard):
 
     def __init__(self, app=None):
         """
-        Initialize the Qt version of the Clipboard
+        Initialize the Qt version of the clipboard
 
         Usage: Called when QtClipboard is imported.
 
@@ -47,7 +47,7 @@ class QtClipboard(AbstractClipboard):
 
     def fill_selection(self, contents):
         """
-        Copy text into the X selection
+        Copy text into the selection
 
         Usage: C{clipboard.fill_selection(contents)}
 
@@ -69,7 +69,7 @@ class QtClipboard(AbstractClipboard):
 
     def get_selection(self):
         """
-        Read text from the X selection
+        Read text from the selection
 
         Usage: C{clipboard.get_selection()}
 
@@ -86,7 +86,7 @@ class QtClipboard(AbstractClipboard):
 
     def fill_clipboard(self, contents):
         """
-        Copy text into the clipboard
+        Copy text onto the clipboard
 
         Usage: C{clipboard.fill_clipboard(contents)}
 
