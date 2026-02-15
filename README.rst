@@ -32,8 +32,6 @@ Installation
 
 **Important**: Please remove previous installations of AutoKey fully before installing!
 
-For detailed installation instructions, please visit the `Installing`_ page in our wiki.
-
 .. _Installing: https://github.com/autokey/autokey/wiki/Installing
 
 Documentation
@@ -58,6 +56,7 @@ We'd appreciate it if you take a look at our `Troubleshooting`_ wiki page before
 .. _IRC: https://web.libera.chat/#autokey
 .. _Libera.Chat: https://libera.chat/guides/
 .. _Gitter: https://gitter.im/autokey/autokey
+.. _Problem reporting guide: https://github.com/autokey/autokey/wiki/Problem-Reporting-Guide
 .. _Troubleshooting: https://github.com/autokey/autokey/wiki/Troubleshooting
 
 Bug reports
@@ -84,8 +83,22 @@ Contributing or modifying the source
 
 Pull requests are welcome from anyone who would like to modify or contribute to the source code. Useful tips for working with and testing the code can be found in the `CONTRIBUTORS.rst`_ file. AutoKey also participates in `CodeTriage`_, where members can sign up to receive a periodic email with a link to an open AutoKey issue that needs help.
 
-.. _CodeTriage: https://www.codetriage.com/autokey/autokey
+See `CONTRIBUTORS.rst`_ for instructions.
 .. _CONTRIBUTORS.rst: https://github.com/autokey/autokey/blob/master/CONTRIBUTORS.rst
+
+
+Pull requests are welcome from anyone who would like to modify or contribute to the source code. Useful tips for working with and testing the code can be found in the `CONTRIBUTORS.rst`_ file. AutoKey also participates in `CodeTriage`_, where members can sign up to receive a periodic email with a link to an open AutoKey issue that needs help.
+
+.. _CodeTriage: https://www.codetriage.com/autokey/autokey
+
+Running the unit tests
+======================
+
+Running the test suite is integrated into :code:`setup.py`. The tests can be run by executing :code:`python3 setup.py test` from the repository root directory.
+
+The unit test suite has two additional requirements:
+* Pytest (https://github.com/pytest-dev/pytest, https://pypi.org/project/pytest/)
+* PyHamcrest (https://github.com/hamcrest/PyHamcrest/, https://pypi.org/project/PyHamcrest/)
 
 Changelog
 =========
