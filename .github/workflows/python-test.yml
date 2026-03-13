@@ -43,8 +43,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
+          sleep 5 && sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -109,8 +109,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
+          sleep 5 && sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -158,8 +158,8 @@ jobs:
 
       - name: Install OS dependencies only
         run: |
-          sudo apt-get update
-          sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
+          sleep 5 && sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -168,3 +168,7 @@ jobs:
       - name: Test installation
         run: |
           pip install "${GITHUB_WORKSPACE}"
+          autokey-gtk --help
+          # qt xcb module requires a display to connect to, so won't work.
+          # export QT_DEBUG_PLUGINS=1
+          # autokey-qt --help
