@@ -44,7 +44,7 @@ jobs:
       - name: Install dependencies
         run: |
           sleep 5 && sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev
+          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev gir1.2-ayatanaappindicator3-0.1 xvfb
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -110,7 +110,7 @@ jobs:
       - name: Install dependencies
         run: |
           sleep 5 && sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev
+          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev gir1.2-ayatanaappindicator3-0.1 xvfb
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -119,7 +119,8 @@ jobs:
 
       - name: Test with tox and pytest
         run: |
-          tox -e clean,coverage,report
+          PY_VER=$(echo "${{ matrix.python-version }}" | tr -d '.')
+          xvfb-run tox -e py$PY_VER,coverage,report
 
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
@@ -159,7 +160,7 @@ jobs:
       - name: Install OS dependencies only
         run: |
           sleep 5 && sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev
+          sudo apt-get install -y --no-install-recommends libgirepository-2.0-dev libglib2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev libayatana-appindicator3-dev gir1.2-ayatanaappindicator3-0.1 xvfb
           sudo ldconfig
           sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
@@ -168,7 +169,7 @@ jobs:
       - name: Test installation
         run: |
           pip install "${GITHUB_WORKSPACE}"
-          autokey-gtk --help
+          xvfb-run autokey-gtk --help
           # qt xcb module requires a display to connect to, so won't work.
           # export QT_DEBUG_PLUGINS=1
           # autokey-qt --help
