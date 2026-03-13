@@ -120,7 +120,7 @@ jobs:
       - name: Test with tox and pytest
         run: |
           PY_VER=$(echo "${{ matrix.python-version }}" | tr -d '.')
-          xvfb-run tox --sitepackages -x "testenv.allowlist_externals=*" -e py$PY_VER,coverage,report
+          xvfb-run tox --sitepackages -x "testenv.allowlist_externals=*" -x "testenv.setenv=PYTHONPATH=lib" -e py$PY_VER,coverage,report
 
       - name: Upload pytest test results
         uses: actions/upload-artifact@v4
