@@ -46,7 +46,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
-          sudo apt-get install $(cat apt-requirements.txt)
+          sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
           pip install flake8 wheel
           pip install -r pip-requirements.txt
@@ -112,7 +112,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
-          sudo apt-get install $(cat apt-requirements.txt)
+          sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
           pip install flake8 tox pytest pytest-cov wheel
           pip install -r pip-requirements.txt
@@ -161,14 +161,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y libgirepository1.0-dev libgobject2.0-dev gir1.2-glib-2.0 pkg-config libcairo2-dev libdbus-1-dev
           sudo ldconfig
-          sudo apt-get install $(cat apt-requirements.txt)
+          sudo apt-get install -y $(cat apt-requirements.txt)
           python -m pip install --upgrade pip
           pip install dbus-python gobject pygobject PyQt5 qscintilla
 
       - name: Test installation
         run: |
           pip install "${GITHUB_WORKSPACE}"
-          autokey-gtk --help
-          # qt xcb module requires a display to connect to, so won't work.
-          # export QT_DEBUG_PLUGINS=1
-          # autokey-qt --help
