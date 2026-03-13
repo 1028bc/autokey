@@ -94,6 +94,10 @@ jobs:
         with:
           fetch-depth: 0
           
+      - name: Fetch all tags
+        # This ensures the tags are present for the version test
+        run: git fetch --tags --force
+          
       - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
